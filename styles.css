@@ -1,0 +1,86 @@
+html {
+    box-sizing: border-box;
+    background: #ffc600;
+    font-family: 'helvetica neue';
+    font-size: 20px;
+    font-weight: 200;
+}
+
+body {
+    margin: 0;
+}
+
+*, *::before, *after {
+    box-sizing: inherit;
+}
+
+.panels {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.panel {
+    background: #6b0f9c;
+    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+    color: white;
+    text-align: center;
+    align-items: center;
+    /* crhome + ff transitioned event.propertyName === flex-grow */
+    transition: 
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+    font-size: 20px;
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel1 { background-image:url(https://denomades.imgix.net/destinos/bariloche/994/san-martin-andes-7-lagos.jpg); }
+.panel2 { background-image:url(https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/9f/94/a2/vista-aerea-de-necochea.jpg?w=700&h=-1&s=1); }
+.panel3 { background-image:url(https://www.rionegro.com.ar/wp-content/uploads/2022/01/Tekking-Rio-Azul-foto-puente-la-tronconada.jpg); }
+.panel4 { background-image:url(https://media.ambito.com/p/1b59752d6d4bd2092877612106b67da3/adjuntos/239/imagenes/040/757/0040757540/cataratas.jpg); }
+.panel5 { background-image:url(https://denomades.s3.us-west-2.amazonaws.com/blog/wp-content/uploads/2020/05/08213126/shutterstock_1371228326.jpg); }
+
+/* Flex Items */
+
+.panel > * {
+    margin: 0;
+    width: 100%;
+    transition: transform 0.5s;
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel > *:first-child { transform: translateY(-100%); }
+.panel.open-active > *:first-child { transform: translateY(0); }
+.panel > *:last-child { transform: translateY(100%); }
+.panel.open-active > *:last-child { transform: translateY(0); }
+
+.panel p {
+    text-transform: uppercase;
+    font-family: 'Amatic SC', cursive;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+    font-size: 2em;
+}
+
+.panel p:nth-child(2) {
+    font-size: 4em;
+  }
+
+  .panel.open {
+    flex: 5;
+    font-size: 40px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .panel p {
+      font-size: 1em;
+    }
+  }
